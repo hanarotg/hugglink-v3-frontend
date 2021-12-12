@@ -16,7 +16,7 @@ const HuggPageContent = ({ match }) => {
     const getPage = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:3030/pages/${match.params.title}`
+          `${process.env.REACT_APP_BACKEND}/pages/${match.params.title}`
         );
         setPage(res.data);
       } catch (e) {

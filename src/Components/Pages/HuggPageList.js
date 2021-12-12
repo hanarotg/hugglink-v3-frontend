@@ -10,7 +10,9 @@ const HuggPageList = () => {
   useEffect(() => {
     const getList = async () => {
       try {
-        const tmpList = await axios.get(`http://localhost:3030/pages/list/1`);
+        const tmpList = await axios.get(
+          `${process.env.REACT_APP_BACKEND}/pages/list/1`
+        );
         setList(tmpList.data);
       } catch (e) {
         setList(null);
