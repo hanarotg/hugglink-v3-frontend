@@ -31,7 +31,7 @@ const HuggPageContent = ({ match }) => {
     <Container>
       <img src={page && page.logoUrl} width={200} />
       <h1>{page && page.title}</h1>
-      <div dangerouslySetInnerHTML={{ __html: getMarked() }}></div>
+      <div id="content" dangerouslySetInnerHTML={{ __html: getMarked() }}></div>
     </Container>
   );
 };

@@ -3,14 +3,9 @@ import { InputBase } from '@mui/material';
 import theme from '../theme';
 
 const HSearchInput = styled(InputBase)`
-  font-weight: 400;
-  background: rgb(243, 246, 249);
-  border: 1px solid ${theme.palette.info.dark};
-  border-radius: 10px;
-  padding: 6px 10px;
+  border-bottom: 3px solid ${theme.palette.info.dark};
   &:hover {
-    background: #eaeef3;
-    border-color: #e5e8ec;
+    border-color: ${theme.palette.primary.main};
   }
 `;
 
