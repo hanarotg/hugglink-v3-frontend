@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
-import { Container } from '@mui/material';
+import { Container, Link, Typography, Box } from '@mui/material';
 import axios from 'axios';
-import marked from 'marked';
+import { marked } from 'marked';
 
 const HuggPageContent = ({ match }) => {
   const [page, setPage] = useState(null);
@@ -30,7 +30,7 @@ const HuggPageContent = ({ match }) => {
   return (
     <Container>
       <img src={page && page.logoUrl} width={200} />
-      <h1>{page && page.title}</h1>
+      <Typography variant="h4">{page && page.title}</Typography>
       <div id="content" dangerouslySetInnerHTML={{ __html: getMarked() }}></div>
     </Container>
   );

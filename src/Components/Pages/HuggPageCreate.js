@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { Container, Button, Alert } from '@mui/material';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { Container, Button } from '@mui/material';
 import HTextInput from '../../Interfaces/HTextInput';
 import axios from 'axios';
 
 const HuggPageCreate = () => {
   const [errorMsg, setErrorMsg] = useState('');
+  const history = useHistory();
 
   // 페이지 생성
   const createPage = async (event) => {
@@ -15,6 +17,8 @@ const HuggPageCreate = () => {
         `${process.env.REACT_APP_BACKEND}/pages`,
         formData
       );
+      // 페이지 이동
+      history.push(`/list/1`);
     } catch (error) {
       setErrorMsg(error.response.data.error);
     }

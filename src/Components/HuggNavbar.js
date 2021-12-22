@@ -8,26 +8,26 @@ import HSearchInput from '../Interfaces/HSearchInput';
 
 const HuggNavbar = () => {
   return (
-    <HAppBar color="info">
+    <HAppBar color="primary">
       <Container>
         <Box display="flex" py={1}>
           <Box flexGrow={1}>
-            <Button component={Link} to={`/`}>
-              <img src={logo} alt="hugg.link logo" />
+            <Button color="inherit" component={Link} to={`/`}>
+              hugg.link
             </Button>
-            <Button color="secondary" component={Link} to={'/list/1'}>
+            <Button color="inherit" component={Link} to={'/list/1'}>
               목록
             </Button>
-            <Button color="secondary" component={Link} to={'/create'}>
+            <Button color="inherit" component={Link} to={'/create'}>
               생성
             </Button>
           </Box>
           <Box>
             <HSearchInput placeholder="검색어를 입력하세요." />
-            <IconButton type="submit" aria-label="search">
+            <IconButton type="submit" aria-label="search" color="inherit">
               <Search />
             </IconButton>
-            <IconButton component={Link} to={'/users'}>
+            <IconButton component={Link} to={'/users'} color="inherit">
               <AccountCircle />
             </IconButton>
           </Box>
