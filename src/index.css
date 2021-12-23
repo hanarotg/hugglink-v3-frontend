@@ -7,16 +7,16 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* 콘텐츠 내 디자인 */
+#content {
+  color: #363636;
+  font-size: 0.9rem;
 }
 
-/* 콘텐츠 내 디자인 */
-
 #content a {
-  color: #0d6efd;
-  background-color: #f1f7ff;
+  color: #363636;
+  text-decoration: none;
+  border-bottom: 2px solid #9a9a9a;
 }
 
 #content table {
@@ -25,4 +25,11 @@ code {
 
 #content tr:nth-child(2n) {
   background-color: #f8f8f8;
+}
+
+#content code {
+  padding: 3px;
+  background-color: #e9f2ff;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
 }

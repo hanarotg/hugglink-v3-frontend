@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import axios from 'axios';
 
-import { Button } from '@mui/material';
+import HuggIndex from './HuggIndex';
 import HuggNavbar from './HuggNavbar';
 import HuggPageList from './Pages/HuggPageList';
 import HuggPage from './Pages/HuggPage';
@@ -35,9 +35,7 @@ const Hugg = () => {
     <>
       <HuggNavbar />
       <Switch>
-        <Route path="/" exact={true}>
-          랜딩페이지
-        </Route>
+        <Route path="/" exact={true} component={HuggIndex}></Route>
         <Route path="/list" component={HuggPageList}></Route>
         <Route path="/pages/:title" component={HuggPage}></Route>
         <Route path="/create" component={HuggPageCreate}></Route>

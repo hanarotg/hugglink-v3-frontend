@@ -20,6 +20,9 @@ const themeOptions = createTheme({
     success: {
       main: '#28a745',
     },
+    text: {
+      main: '#6A6A6A',
+    },
   },
 });
 
