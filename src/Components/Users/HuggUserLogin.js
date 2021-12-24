@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import { Container, Button } from '@mui/material';
+import { Link as RouterLink, useHistory } from 'react-router-dom';
+import { Container, Box, Typography, Link } from '@mui/material';
 import HTextInput from '../../Interfaces/HTextInput';
+import HButton from '../../Interfaces/HButton';
 import axios from 'axios';
 
 const HuggUserLogin = () => {
@@ -30,16 +31,36 @@ const HuggUserLogin = () => {
 
   return (
     <Container>
-      {errorMsg}
-      <h1>로그인</h1>
-      <form onSubmit={loginUser} id="loginForm">
-        이메일 : <HTextInput name="email" />
-        비밀번호 : <HTextInput name="password" type="password" />
-        <Button type="submit" variant="contained">
-          로그인
-        </Button>
-      </form>
-      <Link to={'/users/signup'}>회원가입</Link>
+      <center>
+        <Box pt={3} sx={{ maxWidth: 480 }}>
+          <Typography variant="h5">로그인</Typography>
+          {errorMsg}
+          <form onSubmit={loginUser} id="loginForm">
+            <Box p={1}>
+              <HTextInput name="email" placeholder="이메일" fullWidth />
+            </Box>
+            <Box p={1}>
+              <HTextInput
+                name="password"
+                type="password"
+                placeholder="비밀번호"
+                fullWidth
+              />
+            </Box>
+            <Box p={1}>
+              <HButton type="submit" variant="contained" fullWidth>
+                로그인
+              </HButton>
+            </Box>
+          </form>
+          <Box p={1}>
+            아직 회원이 아니시라면
+            <Link component={RouterLink} to={'/users/signup'}>
+              회원가입
+            </Link>
+          </Box>
+        </Box>
+      </center>
     </Container>
   );
 };

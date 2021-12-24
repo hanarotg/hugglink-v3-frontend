@@ -1,15 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Box, IconButton, Button, Container } from '@mui/material';
-import {
-  AcUnit,
-  AccountCircle,
-  Search,
-  FormatListBulleted,
-  AddBox,
-} from '@mui/icons-material';
+import { Link as RouterLink } from 'react-router-dom';
+import { Box, IconButton, Container } from '@mui/material';
+import { AccountCircle, Search } from '@mui/icons-material';
 import logo from '../logo.svg';
 import HAppBar from '../Interfaces/HAppBar';
+import HSearchInput from '../Interfaces/HSearchInput';
 
 const HuggNavbar = () => {
   return (
@@ -17,21 +12,16 @@ const HuggNavbar = () => {
       <Container>
         <Box display="flex">
           <Box flexGrow={1}>
-            <IconButton component={Link} to={`/`}>
-              <AcUnit />
+            <IconButton component={RouterLink} to={`/`}>
+              <img src={logo} width="24px" alt="logo" />
             </IconButton>
           </Box>
-          <Box sx={{ backgroundColor: '#0d6efd', color: '#e9f2ff' }}>
-            <IconButton color="inherit" type="submit" aria-label="search">
+          <Box>
+            <HSearchInput placeholder="검색어를 입력하세요." />
+            <IconButton type="submit" aria-label="search">
               <Search />
             </IconButton>
-            <IconButton color="inherit" component={Link} to={'/list/1'}>
-              <FormatListBulleted />
-            </IconButton>
-            <IconButton color="inherit" component={Link} to={'/create'}>
-              <AddBox />
-            </IconButton>
-            <IconButton color="inherit" component={Link} to={'/users'}>
+            <IconButton component={RouterLink} to={'/users'}>
               <AccountCircle />
             </IconButton>
           </Box>

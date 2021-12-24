@@ -1,7 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Textsms, Timeline, Edit } from '@mui/icons-material';
-import { Box, Container, IconButton } from '@mui/material';
+import { Link as RouterLink } from 'react-router-dom';
+import { Box, Container, Link } from '@mui/material';
 
 const HuggPageMenu = (props) => {
   const title = props.title;
@@ -9,24 +8,18 @@ const HuggPageMenu = (props) => {
   return (
     <Container>
       <Box fullWidth display="flex" justifyContent="flex-end">
-        <Box sx={{ backgroundColor: '#c8c8c8', color: '#e9f2ff' }}>
-          <IconButton color="inherit" component={Link} to={`/pages/${title}`}>
-            <Textsms />
-          </IconButton>
-          <IconButton
-            color="inherit"
-            component={Link}
-            to={`/pages/${title}/history`}
-          >
-            <Timeline />
-          </IconButton>
-          <IconButton
-            color="inherit"
-            component={Link}
-            to={`/pages/${title}/edit`}
-          >
-            <Edit />
-          </IconButton>
+        <Box sx={{ alignContent: 'space-between' }}>
+          <Link component={RouterLink} to={`/pages/${title}`}>
+            댓글
+          </Link>
+          &nbsp;
+          <Link component={RouterLink} to={`/pages/${title}/history`}>
+            타임라인
+          </Link>
+          &nbsp;
+          <Link component={RouterLink} to={`/pages/${title}/edit`}>
+            문서수정
+          </Link>
         </Box>
       </Box>
     </Container>
