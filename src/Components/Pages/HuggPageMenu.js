@@ -12,11 +12,11 @@ const HuggPageMenu = (props) => {
           <Link component={RouterLink} to={`/pages/${title}`}>
             댓글
           </Link>
-          &nbsp;
+          &nbsp;·&nbsp;
           <Link component={RouterLink} to={`/pages/${title}/history`}>
             타임라인
           </Link>
-          &nbsp;
+          &nbsp;·&nbsp;
           <Link component={RouterLink} to={`/pages/${title}/edit`}>
             문서수정
           </Link>

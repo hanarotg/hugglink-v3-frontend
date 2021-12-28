@@ -5,7 +5,7 @@ import { Container, Box, Typography, Link } from '@mui/material';
 import logo from '../logo.svg';
 
 const HuggIndex = () => {
-  const [pageList, setPageList] = useState([]);
+  // const [pageList, setPageList] = useState([]);
 
   useEffect(() => {}, []);
 
@@ -25,11 +25,11 @@ const HuggIndex = () => {
             <Link component={RouterLink} to={'/list/1'}>
               목록
             </Link>
-            &nbsp;
+            &nbsp;·&nbsp;
             <Link component={RouterLink} to={'/create'}>
               문서생성하기
             </Link>
-            &nbsp;
+            &nbsp;·&nbsp;
             <Link component={RouterLink} to={'/pages/hugg.link'}>
               이용가이드
             </Link>

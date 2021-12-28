@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
-import { Container, Link, Typography, Box } from '@mui/material';
+import { Container, Typography, Box } from '@mui/material';
 import axios from 'axios';
 import { marked } from 'marked';
+import HTag from '../../Interfaces/HTag';
 
 const HuggPageContent = ({ match }) => {
   const [page, setPage] = useState(null);
@@ -12,6 +13,7 @@ const HuggPageContent = ({ match }) => {
     return marked(`${page && page.content}`);
   };
 
+  // 페이지 로딩
   useEffect(() => {
     const getPage = async () => {
       try {
@@ -29,8 +31,18 @@ const HuggPageContent = ({ match }) => {
 
   return (
     <Container>
-      <img src={page && page.logoUrl} width={200} />
-      <Typography variant="h4">{page && page.title}</Typography>
+      <Box pb={2}>
+        <HTag color="text" variant="outlined">
+          {page && page.title}
+        </HTag>
+      </Box>
+
+      {page && page.logoUrl ? (
+        <img src={page.logoUrl} width={200} alt="logo" />
+      ) : (
+        <Typography variant="h4">{page && page.title}</Typography>
+      )}
+
       <div id="content" dangerouslySetInnerHTML={{ __html: getMarked() }}></div>
     </Container>
   );

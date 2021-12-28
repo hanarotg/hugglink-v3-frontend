@@ -1,13 +1,12 @@
 import { styled } from '@mui/system';
 import { InputBase } from '@mui/material';
-import theme from '.././theme';
 
 const HTextInput = styled(InputBase)`
   padding: 5px 10px 5px 10px;
-  border: 1px solid ${theme.palette.text.light};
-  background-color: ${theme.palette.info.main};
+  border: 1px solid #6a6a6a;
+  background-color: #f8f9fa;
   &:hover {
-    border-color: ${theme.palette.primary.main};
+    border-color: #0d6efd;
   }
 `;
 

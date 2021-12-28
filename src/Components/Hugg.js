@@ -8,6 +8,7 @@ import HuggPageList from './Pages/HuggPageList';
 import HuggPage from './Pages/HuggPage';
 import HuggUser from './Users/HuggUser';
 import HuggPageCreate from './Pages/HuggPageCreate';
+import HuggFooter from './HuggFooter';
 
 const Hugg = () => {
   const [userEmail, setUserEmail] = useState('');
@@ -43,7 +44,9 @@ const Hugg = () => {
           path="/users"
           component={() => <HuggUser userEmail={userEmail && userEmail} />}
         ></Route>
+        <Route />
       </Switch>
+      <HuggFooter />
     </>
   );
 };

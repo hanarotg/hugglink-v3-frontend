@@ -1,6 +1,5 @@
 import { styled } from '@mui/system';
 import { AppBar } from '@mui/material';
-import theme from '../theme';
 
 const HAppBar = styled(AppBar)`
   box-shadow: none;
