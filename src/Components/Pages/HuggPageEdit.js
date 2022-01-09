@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import { Container, TextField, Button } from '@mui/material';
+import { Container, TextField, Box, Typography } from '@mui/material';
+import SButton from '../../Interfaces/HButton';
 import axios from 'axios';
 
 const HuggPageEdit = ({ match }) => {
@@ -29,6 +30,9 @@ const HuggPageEdit = ({ match }) => {
     }
   };
 
+  // 로그인 비로그인 여부 확인
+  const isUserAlert = () => {};
+
   useEffect(() => {
     const getPage = async () => {
       try {
@@ -45,32 +49,45 @@ const HuggPageEdit = ({ match }) => {
 
   return (
     <Container>
-      <h1>
+      <Box p={1}></Box>
+      <Typography variant="h4">
         {title}
         편집
-      </h1>
+      </Typography>
       <form onSubmit={editPage} id="editForm">
-        <img src={page && page.logoUrl} alt="logo" />
-        <img src={logo} alt="logoAfter" />
-        <input
-          type="file"
-          accept="image/*"
-          name="file"
-          onChange={(e) => {
-            setLogo(e.target.files[0]);
-          }}
-        />
-        <TextField
-          name="content"
-          fullWidth
-          multiline
-          rows={20}
-          defaultValue={page && page.content}
-        />
-        <Button type="submit" variant="contained">
-          수정 완료
-        </Button>
+        <Box p={1}>
+          <img src={page && page.logoUrl} width="240" alt="logo" />
+          <img src={logo} alt="logoAfter" />
+
+          <input
+            type="file"
+            accept="image/*"
+            name="file"
+            onChange={(e) => {
+              setLogo(e.target.files[0]);
+            }}
+          />
+        </Box>
+        <Box p={1}>
+          <TextField
+            name="content"
+            fullWidth
+            multiline
+            rows={20}
+            defaultValue={page && page.content}
+          />
+        </Box>
+        <Box p={1}>
+          <SButton type="submit" variant="contained">
+            수정 완료
+          </SButton>
+        </Box>
       </form>
+      <Box p={1}>
+        <SButton color="error" variant="outlined">
+          삭제 요청
+        </SButton>
+      </Box>
     </Container>
   );
 };
