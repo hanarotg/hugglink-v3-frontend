@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
+import { userContext } from '../Hugg';
 
-import { Container, TextField, Box, Typography } from '@mui/material';
+import { Container, TextField, Box, Typography, Alert } from '@mui/material';
 import SButton from '../../Interfaces/HButton';
 import axios from 'axios';
 
@@ -9,7 +10,9 @@ const HuggPageEdit = ({ match }) => {
   const { title } = match.params;
   const [page, setPage] = useState({});
   const [logo, setLogo] = useState(null);
+  const [ip, setIp] = useState('');
   const history = useHistory();
+  const userEmail = useContext(userContext);
 
   // 무결성인 page 고유 _id로 데이터를 전송해야 한다.
   const editPage = async (event) => {
@@ -30,30 +33,54 @@ const HuggPageEdit = ({ match }) => {
     }
   };
 
+  // ip 수집(비로그인 사용자에 한함)
+  const getIp = async () => {
+    try {
+      const response = await axios.get('https://geolocation-db.com/json/');
+      setIp(response.data.IPv4);
+    } catch (error) {}
+  };
+
   // 로그인 비로그인 여부 확인
-  const isUserAlert = () => {};
+  const isUserAlert = (userEmail) => {
+    if (userEmail) {
+      return (
+        <Alert severity="success">
+          기여자 : {userEmail}으로 저장됩니다.
+          <br />
+          기여도에 따른 리워드 지급 시 반영됩니다.
+        </Alert>
+      );
+    } else {
+      getIp();
+      return (
+        <Alert severity="warning">
+          현재 비로그인 상태이므로 문서 수정 시 작성자의 아이피({ip && ip})를
+          수집합니다.
+        </Alert>
+      );
+    }
+  };
 
   useEffect(() => {
     const getPage = async () => {
       try {
         const res = await axios.get(
-          `${process.env.REACT_APP_BACKEND}/pages/${match.params.title}`
+          `${process.env.REACT_APP_BACKEND}/pages/${title}`
         );
         setPage(res.data);
       } catch (e) {
         setPage(null);
       }
     };
+
     getPage();
-  }, []);
+  }, [title]);
 
   return (
     <Container>
-      <Box p={1}></Box>
-      <Typography variant="h4">
-        {title}
-        편집
-      </Typography>
+      <Box p={1}>{isUserAlert(userEmail)}</Box>
+      <Typography variant="h4">편집</Typography>
       <form onSubmit={editPage} id="editForm">
         <Box p={1}>
           <img src={page && page.logoUrl} width="240" alt="logo" />

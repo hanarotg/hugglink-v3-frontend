@@ -13,10 +13,7 @@ const HuggPageCreate = () => {
     try {
       event.preventDefault();
       const formData = new FormData(document.getElementById('createPageForm'));
-      const res = await axios.post(
-        `${process.env.REACT_APP_BACKEND}/pages`,
-        formData
-      );
+      await axios.post(`${process.env.REACT_APP_BACKEND}/pages`, formData);
       // 페이지 이동
       history.push(`/list/1`);
     } catch (error) {

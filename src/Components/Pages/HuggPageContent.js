@@ -6,6 +6,7 @@ import { marked } from 'marked';
 import HTag from '../../Interfaces/HTag';
 
 const HuggPageContent = ({ match }) => {
+  const { title } = match.params;
   const [page, setPage] = useState(null);
 
   // 마크다운 문법 파싱
@@ -18,7 +19,7 @@ const HuggPageContent = ({ match }) => {
     const getPage = async () => {
       try {
         const res = await axios.get(
-          `${process.env.REACT_APP_BACKEND}/pages/${match.params.title}`
+          `${process.env.REACT_APP_BACKEND}/pages/${title}`
         );
         setPage(res.data);
       } catch (e) {
@@ -27,7 +28,7 @@ const HuggPageContent = ({ match }) => {
     };
 
     getPage();
-  }, []);
+  }, [title]);
 
   return (
     <Container>

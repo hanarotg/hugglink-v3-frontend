@@ -1,14 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { Container, Box, Typography, Link } from '@mui/material';
 
 import logo from '../logo.svg';
 
 const HuggIndex = () => {
-  // const [pageList, setPageList] = useState([]);
-
-  useEffect(() => {}, []);
-
   return (
     <Container>
       <Box pt={5} fullWidth>
