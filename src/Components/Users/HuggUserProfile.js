@@ -4,7 +4,15 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 
 import axios from 'axios';
-import { Container, Box, Divider } from '@mui/material';
+import {
+  Container,
+  Box,
+  Divider,
+  Avatar,
+  Grid,
+  Typography,
+  Link as RouterLink,
+} from '@mui/material';
 import HButton from '../../Interfaces/HButton';
 
 const HuggUserProfile = (props) => {
@@ -32,10 +40,20 @@ const HuggUserProfile = (props) => {
       <Container>
         <center>
           <Box pt={3} sx={{ maxWidth: 480 }}>
-            {userEmail}
+            <Grid container spacing={1} p={1}>
+              <Grid item>
+                <Avatar>{userEmail[0]}</Avatar>
+              </Grid>
+              <Grid item xs>
+                {userEmail}
+              </Grid>
+            </Grid>
             <Divider />
 
             <Box p={1}>
+              <Typography variant="subtitle2">
+                * 주기적인 비밀번호 변경은 보안 사고 예방에 큰 도움이 됩니다.
+              </Typography>
               <HButton fullWidth variant="contained" component={Link} to="">
                 비밀번호 변경
               </HButton>
@@ -52,15 +70,9 @@ const HuggUserProfile = (props) => {
               </HButton>
             </Box>
             <Box p={1} pt={10}>
-              <HButton
-                fullWidth
-                variant="outlined"
-                color="error"
-                component={Link}
-                to=""
-              >
+              <RouterLink color="secondary.light" component={Link} to="">
                 회원탈퇴
-              </HButton>
+              </RouterLink>
             </Box>
           </Box>
         </center>

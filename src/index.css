@@ -51,3 +51,8 @@ body {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* 콘텐츠 수정 영역 */
+#contentEdit {
+  font-size: 0.9em;
+}

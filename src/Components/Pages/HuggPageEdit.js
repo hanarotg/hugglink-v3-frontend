@@ -19,6 +19,7 @@ const HuggPageEdit = ({ match }) => {
     try {
       event.preventDefault();
       const formData = new FormData(document.getElementById('editForm'));
+      formData.append('author', userEmail ? userEmail : ip);
       await axios.patch(
         `${process.env.REACT_APP_BACKEND}/pages/${page._id}`,
         formData,
@@ -98,6 +99,7 @@ const HuggPageEdit = ({ match }) => {
         <Box p={1}>
           <TextField
             name="content"
+            id="contentEdit"
             fullWidth
             multiline
             rows={20}

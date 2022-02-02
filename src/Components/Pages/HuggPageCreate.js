@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Container, Button } from '@mui/material';
+import { Container, Box } from '@mui/material';
 import HTextInput from '../../Interfaces/HTextInput';
+import HButton from '../../Interfaces/HButton';
 import axios from 'axios';
 
 const HuggPageCreate = () => {
@@ -23,11 +24,15 @@ const HuggPageCreate = () => {
 
   return (
     <Container>
-      {errorMsg}
       <h1>페이지 생성</h1>
+      {errorMsg}
       <form onSubmit={createPage} id="createPageForm">
         페이지명 : <HTextInput name="title" />
-        <Button type="submit">생성요청</Button>
+        <Box p={1}>
+          <HButton variant="outlined" type="submit">
+            생성요청
+          </HButton>
+        </Box>
       </form>
     </Container>
   );
